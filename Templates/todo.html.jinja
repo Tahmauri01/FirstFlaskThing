@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo List</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap" rel="stylesheet">
+    </head>
+
+    <body style="background-color: rgb(255, 192, 116); font-family: 'Shantell Sans';">
+        <h1 style="color: rgb(1, 15, 27);">My Todo List Is...</h1>
+        <ul>
+        {% for task in todo %}
+            <li style="color: aliceblue; font-size:200%">{{task}}</li>
+        {% endfor %}
+        </ul>
+        <form 
+        action="/add"
+        method="post"
+        >
+            <textarea name="new_todo">
+            </textarea>
+            <input type="submit">
+        </form>
+    </body>
+</html>
