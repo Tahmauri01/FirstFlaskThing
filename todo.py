@@ -1,15 +1,15 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 
 app = Flask(__name__)
 
-todo=["Create a game", "Get a job"]
+todos=["Create a game", "Get a job"]
 
 @app.route("/")
 def index():
     return render_template(
         "todo.html.jinja",
-        
+        todo = todos
     )
 
 
@@ -18,4 +18,5 @@ def index():
 @app.route("/add", methods=['POST'])
 def add():
     new_todo = request.form['new_todo']
-    todo.append(new_todo)
+    todos.append(new_todo)
+    return redirect("/")
