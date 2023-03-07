@@ -9,18 +9,23 @@ todos=["Create a game", "Get a job"]
 
 @app.route("/")
 def index():
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM `Todos`')
+
+    results = cursor.fetchall()
+
     return render_template(
         "todo.html.jinja",
-        todo = todos
+        todo = results
     )
-
 
 
 
 @app.route("/add", methods=['POST'])
 def add():
     new_todo = request.form['new_todo']
-    todos.append(new_todo)
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO `Todos`(`Description`) VALUES ('"+new_todo+"')")
     return redirect("/")
 
 
@@ -32,11 +37,3 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor,
     autocommit=True
 )
-
-cursor = connection.cursor()
-
-cursor.execute("SELECT * from `Todos`")
-
-result = cursor.fetchall()
-
-print(result)

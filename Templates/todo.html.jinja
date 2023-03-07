@@ -5,20 +5,25 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap" rel="stylesheet">
+        <style>
+        
+        
+        
+        </style>
     </head>
 
     <body style="background-color: rgb(255, 192, 116); font-family: 'Shantell Sans';">
-        <h1 style="color: rgb(1, 15, 27);">My Todo List Is...</h1>
-        <ul>
+        <h1 style="color: rgb(1, 15, 27); padding-left: 600px">My Todo List Is...</h1>
+        <ul style="padding-left: 700px">
         {% for task in todo %}
-            <li style="color: aliceblue; font-size:200%">{{task}}</li>
+            <li style="color: aliceblue; font-size:200%; ">{{task['Description']}}</li>
         {% endfor %}
         </ul>
         <form 
         action="/add"
         method="post"
         >
-            <textarea name="new_todo">
+            <textarea rows="5" cols="10" name="new_todo" style="color: rgb(255, 192, 116); background-color:  ; padding-left:93%">
             </textarea>
             <input type="submit">
         </form>
