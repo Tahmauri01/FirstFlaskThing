@@ -16,14 +16,14 @@
         <h1 style="color: rgb(1, 15, 27); padding-left: 600px">My Todo List Is...</h1>
         <ul style="padding-left: 700px">
         {% for task in todo %}
-            <li style="color: aliceblue; font-size:200%; ">{{task['Description']}}</li>
+            <li style="color: aliceblue; font-size:200%; {% if task['Complete'] == 1 %} color:grey; text-decoration:line-through {%endif%}">{{task['Description']}}</li>
         {% endfor %}
         </ul>
         <form 
         action="/add"
         method="post"
         >
-            <textarea rows="5" cols="10" name="new_todo" style="color: rgb(255, 192, 116); background-color:  ; padding-left:93%">
+            <textarea name="new_todo" style="color: rgb(255, 192, 116); background-color:  ; border-color: black; margin-left:41%; padding-right:7%;  border-radius: 25px; padding: 20px; width: 200px; height: 150px;">
             </textarea>
             <input type="submit">
         </form>

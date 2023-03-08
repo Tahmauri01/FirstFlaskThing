@@ -10,7 +10,7 @@ todos=["Create a game", "Get a job"]
 @app.route("/")
 def index():
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM `Todos`')
+    cursor.execute('SELECT * FROM `Todos` ORDER BY `Complete` ASC;')
 
     results = cursor.fetchall()
 
