@@ -4,6 +4,7 @@
         <title>Todo List</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link ref="stylesheet" href="jinja.css" >
         <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap" rel="stylesheet">
         <style>
         
@@ -17,6 +18,11 @@
         <ul style="padding-left: 700px">
         {% for task in todo %}
             <li style="color: aliceblue; font-size:200%; {% if task['Complete'] == 1 %} color:grey; text-decoration:line-through {%endif%}">{{task['Description']}}</li>
+                <form action="/complete" method="post">
+                    <input name="Todos_id" value="{{Todos['id']}}" hidden>
+                    <input type="submit" value="Complete">
+                </form>
+                {{todo['description']}}
         {% endfor %}
         </ul>
         <form 
@@ -25,7 +31,7 @@
         >
             <textarea name="new_todo" style="color: rgb(255, 192, 116); background-color:  ; border-color: black; margin-left:41%; padding-right:7%;  border-radius: 25px; padding: 20px; width: 200px; height: 150px;">
             </textarea>
-            <input type="submit">
+            <input type="button" style="">
         </form>
     </body>
 </html>

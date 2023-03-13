@@ -28,6 +28,16 @@ def add():
     cursor.execute("INSERT INTO `Todos`(`Description`) VALUES ('"+new_todo+"')")
     return redirect("/")
 
+@app.route("/complete", methods=["POST"])
+def complete():
+    todo_id = request.form['todo_id']
+
+    cursor = connection.cursor()
+
+    cursor.execute(f"UPDATE `Todos` SET `Complete` = 1 WHERE `id` = {todo_id}")
+
+    return redirect("/")
+
 
 connection = pymysql.connect(
     host="10.100.33.60",
